@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANDA OA - บริษัท แวนด้า โอเอ จำกัด</title>
+    <!-- นำเข้าฟอนต์ Google Font (Kanit) เพื่อความสวยงาม -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* --- 1. Header & Navigation --- */
+        header {
+            background-color: #0b4f6c; /* สีน้ำเงินเข้มตามภาพ */
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 50px; /* สำหรับใส่โลโก้จริง */
+            background-color: #fff;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- 2. Hero Section --- */
+        .hero {
+            background-color: #8c8c8c; /* สีเทาตามภาพ (เปลี่ยนเป็น background-image ได้) */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            background-color: #e62429; /* ปุ่มสีแดง */
+            color: #ffffff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #c41e23;
+        }
+
+        /* --- 3. Main Content / Card Sections --- */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* การ์ดรูปภาพที่มีตัวหนังสือซ้อนทับอยู่ตรงกลาง */
+        .image-card {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #999999; /* สีสำรองกรณีรูปไม่โหลด */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-card img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ปรับรูปภาพให้เต็มพื้นที่ */
+            z-index: 1;
+        }
+
+        /* ช่วยเพิ่มความเข้มให้รูป เพื่อให้ข้อความอ่านง่ายขึ้น */
+        .image-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: 2;
+        }
+
+        .image-card-text {
+            position: relative;
+            z-index: 3;
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* เงาข้อความช่วยเพิ่มความคมชัด */
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        /* --- 4. Section คำถามที่พบบ่อย --- */
+        .faq-section {
+            text-align: center;
+            margin: 50px 0 20px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* --- 5. Footer / ติดต่อเรา --- */
+        footer {
+            background-color: hsl(0, 0%, 65%); /* สีเทาล่างสุด */
+            color: #333333;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ส่วนหัวเว็บไซต์ (Navbar) -->
+    <!-- Header / Navbar ที่ใส่ลิงก์เชื่อมกันทุกหน้า -->
+    <header>
+        <!-- กดที่โลโก้เพื่อกลับหน้าแรก -->
+        <a href="index.html" class="logo-container" style="text-decoration: none; color: inherit;">
+            <img src="https://media.tarad.com/v/vandaoa/img-lib/bns_20120410132659_th.JPG" alt="Vanda OA Logo" class="logo-img">   
+            <div class="logo-text">
+                <h1>VANDA OA</h1>
+                <span>บริษัท แวนด้า โอเอ จำกัด</span>
+            </div>
+        </a>
+
+        <!-- เมนูลิงก์ไปยังหน้าต่างๆ -->
+        <nav>
+            <ul class="product-specs">
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/index.html#">หน้าแรก</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A12.html">สินค้า</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A9.html">FAQ</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A10.html">เกี่ยวกับเรา</a></li>
+                        <li><a href="file:///C:/Users/User/Documents/Jamthima/A11.html">ติดต่อ</a></li>
+                    </ul>
+        </nav>
+    </header>
+
+    <!-- 2. ส่วน Hero Banner ด้านบน -->
+    <section class="hero">
+        <h2>VANDA OA</h2>
+        
+        <p>ผู้เชี่ยวชาญด้านเครื่องปริ้นเตอร์ เครื่องถ่ายเอกสาร และอุปกรณ์สำนักงาน</p>
+        <li><a href="file:///C:/Users/User/Documents/Jamthima/A12.html" class="btn-primary">เลือกชมสินค้า</a></li>
+    </section>
+
+    <!-- 3. ส่วนรายการเมนู / รูปภาพ (Cards) -->
+    <main class="container">
+        
+        <!-- เมนูที่ 1 (ครอบด้วยแท็ก <a> เพื่อกดแล้วเปิดไปอีกหน้า) -->
+    <a href="file:///C:/Users/User/Documents/Jamthima/A3.HTML" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+        <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+        <img src="c:\Users\User\Documents\Jamthima\เครื่องปริ้นเตอร์.png" alt="รูปเมนู 1">
+        <div class="image-card-overlay"></div>
+        <div class="image-card-text">ปริ้นเตอร์รุ่น HP</div>
+        </div>
+    </a>
+
+        <!-- เมนูที่ 2 -->
+    <a href="file:///C:/Users/User/Documents/Jamthima/A2.HTML" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\เอกสาร.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น EPSON</div>
+        </div>
+    </a>
+
+     <a href="file:///C:/Users/User/Documents/Jamthima/A5.html" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\สแกน.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น FUJITHSU</div>
+        </div>
+    </a>
+
+     <a href="file:///C:/Users/User/Documents/Jamthima/A1.html" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\เครื่องปริ้นเตอร์.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น OKI</div>
+        </div>
+    </a>
+
+     <a href="file:///C:/Users/User/Documents/Jamthima/A6.html" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\ซัมซุง.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น SAMSUNG</div>
+        </div>
+    </a>
+        <!-- เมนูที่ 3 -->
+    <a href="file:///C:/Users/User/Documents/Jamthima/A4.html" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\สแกน.png" alt="รูปเมนู 3">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น BROTHER</div>
+        </div>
+    </a>
+
+    <a href="file:///C:/Users/User/Documents/Jamthima/A7.html" style="text-decoration: none; color: inherit;">
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\เครื่องปริ้นเตอร์.png" alt="รูปเมนู 3">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">ปริ้นเตอร์รุ่น CANON</div>
+        </div>
+    </a>
+
+    <a href="file:///C:/Users/User/Documents/Jamthima/A8.html" style="text-decoration: none; color: inherit;">    <!-- เมนูที่ 4 -->
+       <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\อะไหล่.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">อะไหล่</div>
+        </div>
+    </a>  
+
+    
+     <a href="file:///C:/Users/User/Documents/Jamthima/A8.html" style="text-decoration: none; color: inherit;">    <!-- เมนูที่ 4 -->
+        <div class="image-card">
+            <!-- ใส่ path รูปภาพของคุณที่ src ด้านล่างนี้ -->
+            <img src="c:\Users\User\Documents\Jamthima\หมึก.png" alt="รูปเมนู 2">
+            <div class="image-card-overlay"></div>
+            <div class="image-card-text">หมึก&โทนเนอร์</div>
+        </div>
+    </a>  
+
+        <!-- Section ข้อความ "คำถามที่พบบ่อย" -->
+        <div class="faq-section">
+         <li><a href="file:///C:/Users/User/Documents/Jamthima/A9.html"><h2>คำถามที่พบบ่อย</h2></a></li>
+            
+        </div>
+
+    </main>
+
+    <!-- 4. ส่วนท้ายเว็บ (Footer / ติดต่อเรา) -->
+    <footer>
+        <section class="contact" id="contact">
+
+        <div>
+
+        <li><a href="file:///C:/Users/User/Documents/Jamthima/A11.html"><h2>ติดต่อเรา</h2></a></li>
+
+            <p>
+                โทร : 086-3229037
+                      089-6624481 
+                <br>
+                ID Line : 0863229037
+                <br>
+                Email : vandaoa@hotemail.com หรือ 
+                <a href="https://www.vandaoa.com/"> WWW.VANDAOA.COM </a>
+            </p>
+
+        </div>
+
+    </section>
+    </footer>
+
+</body>
+</html>
